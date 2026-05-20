@@ -1,0 +1,14 @@
+*{
+    font-family: sans-serif;
+}
+
+.kotak {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px;
+}
+
+.kotak2 {
+    padding: 4px;
+    line-height: 4px;
+}
