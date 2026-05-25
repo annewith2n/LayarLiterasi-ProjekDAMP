@@ -1,32 +1,297 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="style.css"
-      rel="stylesheet"
-    />
-    <title>
-        Layar Literasi
-    </title>
-  </head>
-  <body>
-    <h1></h1>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beranda - Layar Literasi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    <div class="kotak">
-        <div>
-            <img src = "logolayar.png" alt="logo">
+  <!-- Simulated Mobile Device Frame -->
+  <div class="phone-wrapper">
+    <div class="phone-content">
+      
+      <!-- Simulated Status Bar -->
+      <div class="status-bar">
+        <span class="time">9:41</span>
+        <div class="right-icons">
+          <!-- Connection Bars -->
+          <svg viewBox="0 0 24 24" style="width: 17px; height: 11px;">
+            <rect x="1" y="15" width="3" height="5" rx="0.5" />
+            <rect x="6" y="12" width="3" height="8" rx="0.5" />
+            <rect x="11" y="8" width="3" height="12" rx="0.5" />
+            <rect x="16" y="4" width="3" height="16" rx="0.5" />
+            <rect x="21" y="0" width="3" height="20" rx="0.5" opacity="0.3" />
+          </svg>
+          <!-- Wifi Signal -->
+          <svg viewBox="0 0 24 24" style="width: 16px; height: 16px;">
+            <path d="M12 21a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm7.07-7.07a10 10 0 0 0-14.14 0l1.41 1.41a8 8 0 0 1 11.32 0l1.41-1.41zm3.54-3.54a15 15 0 0 0-21.22 0l1.42 1.42a13 13 0 0 1 18.38 0l1.42-1.42z" />
+          </svg>
+          <!-- Battery Status -->
+          <svg viewBox="0 0 24 24" style="width: 22px; height: 13px;">
+            <rect x="1" y="5" width="17" height="11" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.5" />
+            <rect x="3" y="7" width="10" height="7" rx="1.2" fill="currentColor" />
+            <path d="M19 8.5v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
         </div>
-            
-        <div>
-            <img src = "gambarorang.png" alt="profil">
-        </div>
+      </div>
+
+      <!-- App Main Content Container -->
+      <div class="app-container">
+        
+        <!-- Header -->
+        <header class="app-header">
+          <div class="logo-chip">
+            <!-- Stack of books SVG icon -->
+            <svg viewBox="0 0 24 24">
+              <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"/>
+            </svg>
+            <span>Layar Literasi</span>
+          </div>
+          <img src="gambarorang.png" alt="Profil Susi" class="profile-avatar">
+        </header>
+
+        <!-- Greetings Section -->
+        <section class="greetings">
+          <h1>Hi, Susi!</h1>
+          <p>What to read today?</p>
+        </section>
+
+        <!-- Days Streak/Tracker Section -->
+        <section class="days-tracker">
+          <!-- Mon -->
+          <div class="day-chip lavender">
+            <span class="day-name">Mon</span>
+            <div class="day-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </div>
+          </div>
+          <!-- Tue -->
+          <div class="day-chip lime">
+            <span class="day-name">Tue</span>
+            <div class="day-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </div>
+          </div>
+          <!-- Wed -->
+          <div class="day-chip lavender">
+            <span class="day-name">Wed</span>
+            <div class="day-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </div>
+          </div>
+          <!-- Thur -->
+          <div class="day-chip lime">
+            <span class="day-name">Thur</span>
+            <div class="day-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.66 11.57c-.77-2-2.21-3.58-3.97-4.52a8.55 8.55 0 0 0-2.3-1.07C10.74 5.3 10 4.18 10 3a1 1 0 0 0-1.74-.69c-.43.47-.84 1-1.2 1.57C5.39 6.5 4.67 9.11 5.39 11.66c.03.11.07.22.11.33A6.5 6.5 0 1 0 17.66 11.57zm-6.28 7.37c-.37-.36-.62-.86-.62-1.4 0-1.12.91-2.03 2.03-2.03.55 0 1.05.22 1.41.59.39.4.92.65 1.5.65a2.12 2.12 0 0 0 2.11-2.12c0-1.03-.49-1.95-1.25-2.54a5.16 5.16 0 0 1 1 3.29c-.04.47-.13.92-.28 1.35a4.49 4.49 0 0 1-5.9 2.21z" />
+              </svg>
+            </div>
+          </div>
+          <!-- Fri -->
+          <div class="day-chip lavender">
+            <span class="day-name">Fri</span>
+            <div class="day-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.66 11.57c-.77-2-2.21-3.58-3.97-4.52a8.55 8.55 0 0 0-2.3-1.07C10.74 5.3 10 4.18 10 3a1 1 0 0 0-1.74-.69c-.43.47-.84 1-1.2 1.57C5.39 6.5 4.67 9.11 5.39 11.66c.03.11.07.22.11.33A6.5 6.5 0 1 0 17.66 11.57zm-6.28 7.37c-.37-.36-.62-.86-.62-1.4 0-1.12.91-2.03 2.03-2.03.55 0 1.05.22 1.41.59.39.4.92.65 1.5.65a2.12 2.12 0 0 0 2.11-2.12c0-1.03-.49-1.95-1.25-2.54a5.16 5.16 0 0 1 1 3.29c-.04.47-.13.92-.28 1.35a4.49 4.49 0 0 1-5.9 2.21z" />
+              </svg>
+            </div>
+          </div>
+          <!-- Sat -->
+          <div class="day-chip lime">
+            <span class="day-name">Sat</span>
+            <div class="day-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.66 11.57c-.77-2-2.21-3.58-3.97-4.52a8.55 8.55 0 0 0-2.3-1.07C10.74 5.3 10 4.18 10 3a1 1 0 0 0-1.74-.69c-.43.47-.84 1-1.2 1.57C5.39 6.5 4.67 9.11 5.39 11.66c.03.11.07.22.11.33A6.5 6.5 0 1 0 17.66 11.57zm-6.28 7.37c-.37-.36-.62-.86-.62-1.4 0-1.12.91-2.03 2.03-2.03.55 0 1.05.22 1.41.59.39.4.92.65 1.5.65a2.12 2.12 0 0 0 2.11-2.12c0-1.03-.49-1.95-1.25-2.54a5.16 5.16 0 0 1 1 3.29c-.04.47-.13.92-.28 1.35a4.49 4.49 0 0 1-5.9 2.21z" />
+              </svg>
+            </div>
+          </div>
+        </section>
+
+        <!-- Search Bar Section -->
+        <section class="search-container">
+          <svg viewBox="0 0 24 24">
+            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+          </svg>
+          <input type="text" class="search-input" placeholder="Search">
+        </section>
+
+        <!-- Recommendations Section -->
+        <section class="recommendations-section">
+          <h2 class="section-title">Recomendations</h2>
+          <div class="recommendations-carousel">
+            <!-- Book 1 -->
+            <div class="book-card">
+              <img src="timun_mas.png" alt="Cover Timun Mas" class="cover-img">
+              <div class="card-overlay">
+                <span class="tag fairytale">Fairytale</span>
+                <h3>Timun Mas</h3>
+                <p class="description">The agreement between Mbok Randa and the giant concerns a child.</p>
+                <div class="rating-row">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg>
+                  <span>4.9 (120 pembaca)</span>
+                </div>
+              </div>
+            </div>
+            <!-- Book 2 -->
+            <div class="book-card">
+              <img src="mothers_love.png" alt="Cover A Mother's Love" class="cover-img">
+              <div class="card-overlay">
+                <span class="tag history">History</span>
+                <h3>A Mother's Love</h3>
+                <p class="description">A mother overcomes hardship, showing her child the true meaning of warmth.</p>
+                <div class="rating-row">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg>
+                  <span>4.8 (85 pembaca)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Categories Grid Section -->
+        <section class="categories-section">
+          <div class="categories-grid">
+            <!-- Card 1 -->
+            <div class="category-card green">
+              <div class="card-top">
+                <h4>Fairytale</h4>
+                <span class="progress-pill">10/30</span>
+              </div>
+              <button class="btn-start">Start</button>
+            </div>
+            <!-- Card 2 -->
+            <div class="category-card lavender">
+              <div class="card-top">
+                <h4>Fables</h4>
+                <span class="progress-pill">08/30</span>
+              </div>
+              <button class="btn-start">Start</button>
+            </div>
+            <!-- Card 3 -->
+            <div class="category-card lavender">
+              <div class="card-top">
+                <h4>History</h4>
+                <span class="progress-pill">00/30</span>
+              </div>
+              <button class="btn-start">Start</button>
+            </div>
+            <!-- Card 4 -->
+            <div class="category-card green">
+              <div class="card-top">
+                <h4>Tech</h4>
+                <span class="progress-pill">00/30</span>
+              </div>
+              <button class="btn-start">Start</button>
+            </div>
+            <!-- Card 5 -->
+            <div class="category-card green">
+              <div class="card-top">
+                <h4>Life</h4>
+                <span class="progress-pill">00/30</span>
+              </div>
+              <button class="btn-start">Start</button>
+            </div>
+            <!-- Card 6 -->
+            <div class="category-card lavender">
+              <div class="card-top">
+                <h4>Science</h4>
+                <span class="progress-pill">00/30</span>
+              </div>
+              <button class="btn-start">Start</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Extra Bottom Recommendations Section to emulate mockup scroll tail -->
+        <section class="recommendations-section">
+          <h2 class="section-title">Recomendations</h2>
+        </section>
+
+      </div>
     </div>
 
-    <div class="kotak2">
-        <h2>Hi, Susi!</h2>
-        <p>What to read today?</p>
-    </div>
-  </body>
+    <!-- Floating Bottom Navigation Bar (Fixed at the bottom of phone-wrapper) -->
+    <nav class="bottom-nav">
+      <!-- Home (Active) -->
+      <div class="nav-item active">
+        <svg viewBox="0 0 24 24">
+          <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+        </svg>
+      </div>
+      <!-- Goal/Target -->
+      <div class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+          stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <circle cx="12" cy="12" r="6"></circle>
+          <circle cx="12" cy="12" r="2"></circle>
+        </svg>
+      </div>
+      <!-- Profile -->
+      <div class="nav-item">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+        </svg>
+      </div>
+    </nav>
+  </div>
+
+  <script>
+    const sliders = document.querySelectorAll('.days-tracker, .recommendations-carousel');
+
+    sliders.forEach(slider => {
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+
+      slider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        slider.style.cursor = 'grabbing';
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+        
+        // Temporarily disable scroll-snap on drag to prevent jitter
+        if (slider.classList.contains('recommendations-carousel')) {
+          slider.style.scrollSnapType = 'none';
+        }
+      });
+
+      slider.addEventListener('mouseleave', () => {
+        isDown = false;
+        slider.style.cursor = 'grab';
+      });
+
+      slider.addEventListener('mouseup', () => {
+        isDown = false;
+        slider.style.cursor = 'grab';
+        
+        // Re-enable scroll-snap on mouse release
+        if (slider.classList.contains('recommendations-carousel')) {
+          slider.style.scrollSnapType = 'x mandatory';
+        }
+      });
+
+      slider.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 2; // scroll speed multiplier
+        slider.scrollLeft = scrollLeft - walk;
+      });
+    });
+  </script>
+</body>
 </html>
