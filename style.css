@@ -1,575 +1,741 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
-
+/* ==========================================================================
+   DESIGN SYSTEM & CUSTOM PROPERTIES
+   ========================================================================== */
 :root {
-  --bg-app: #F5F6FC;
-  --bg-frame: #111115;
-  --primary-purple: #3C3170;
-  --primary-purple-hover: #2F2659;
-  --accent-lime: #D2F154;
-  --accent-lime-hover: #C0DE40;
-  --accent-lavender: #D5D7F2;
-  --accent-lavender-hover: #C5C7E2;
-
-  --tag-fairytale: #FBD3E9;
-  --tag-fairytale-text: #B42571;
-  --tag-history: #E2EFFE;
-  --tag-history-text: #2B73C9;
-
-  --text-dark: #1F1B2C;
-  --text-muted: #6C6A84;
-  --text-light: #FFFFFF;
-
-  --font-title: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    /* Color Palette */
+    --primary-color: #3E3275;      /* Deep violet (headers, badges, indicators) */
+    --primary-light: #C9C7ED;     /* Inactive light lavender */
+    --accent-color: #D8F55A;       /* Lime green (progress card, read card) */
+    --accent-light: #E5FAC0;       /* Soft yellow-cream for stars card */
+    --text-olive: #3B4E18;         /* Dark olive green for titles */
+    --text-muted: #7E79A8;         /* Faded violet text */
+    --bg-color: #F1F1F8;           /* Light grayish-lavender screen background */
+    --white: #FFFFFF;
+    
+    /* Device Mockup Colors */
+    --device-bezel: #1C1C1E;
+    --device-screen-shadow: 0 25px 50px -12px rgba(62, 50, 117, 0.25);
+    
+    /* Typography */
+    --font-main: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
+/* ==========================================================================
+   RESET & BASE STYLES
+   ========================================================================== */
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
-  background-color: #E2E4ED;
-  font-family: var(--font-body);
-  color: var(--text-dark);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  overflow-x: hidden;
+    font-family: var(--font-main);
+    background-color: #E2E1F0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 20px;
 }
 
-/* Simulated Mobile Device Frame */
-.phone-wrapper {
-  background-color: var(--bg-frame);
-  border: 12px solid var(--bg-frame);
-  border-radius: 48px;
-  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.35),
-    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
-  width: 412px;
-  height: 846px;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* Hide scrollbar for Chrome, Safari and Opera */
+.phone-screen::-webkit-scrollbar,
+.app-body::-webkit-scrollbar,
+.days-container::-webkit-scrollbar {
+    display: none;
 }
 
-/* Content Container inside Phone */
-.phone-content {
-  background-color: var(--bg-app);
-  width: 100%;
-  height: 100%;
-  border-radius: 36px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  scrollbar-width: none;
-  /* Hide scrollbar for Firefox */
+/* Hide scrollbar for IE, Edge and Firefox */
+.phone-screen,
+.app-body,
+.days-container {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
 
-.phone-content::-webkit-scrollbar {
-  display: none;
-  /* Hide scrollbar for Chrome/Safari */
+/* ==========================================================================
+   DEVICE MOCKUP WRAPPER (IPHONE STYLE)
+   ========================================================================== */
+.phone-mockup {
+    position: relative;
+    width: 412px;
+    height: 860px;
+    background-color: var(--device-bezel);
+    border: 14px solid var(--device-bezel);
+    border-radius: 48px;
+    box-shadow: var(--device-screen-shadow), 
+                0 0 0 4px rgba(255, 255, 255, 0.1),
+                0 30px 70px rgba(0, 0, 0, 0.35);
+    display: flex;
+    flex-direction: column;
+    overflow: visible; /* to allow buttons to peak out */
+    transition: all 0.3s ease;
 }
 
-/* Simulated Status Bar */
+/* Phone Buttons (Visual Polish) */
+.phone-volume-buttons {
+    position: absolute;
+    left: -18px;
+    top: 180px;
+    width: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: -1;
+}
+.volume-up, .volume-down {
+    width: 4px;
+    height: 50px;
+    background: #2c2c2e;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.phone-power-button {
+    position: absolute;
+    right: -18px;
+    top: 240px;
+    width: 4px;
+    height: 80px;
+    background: #2c2c2e;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    z-index: -1;
+}
+
+/* Notch/Dynamic Island */
+.phone-notch {
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110px;
+    height: 28px;
+    background-color: #000000;
+    border-radius: 20px;
+    z-index: 100;
+    box-shadow: inset 0 0 4px rgba(255,255,255,0.1);
+}
+
+/* Phone Screen */
+.phone-screen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    border-radius: 36px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Phone Home Indicator Bar */
+.phone-home-indicator {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 130px;
+    height: 5px;
+    background-color: #000000;
+    border-radius: 10px;
+    opacity: 0.25;
+    z-index: 99;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   STATUS BAR
+   ========================================================================== */
 .status-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 28px 8px;
-  font-family: var(--font-title);
-  font-weight: 600;
-  font-size: 14px;
-  color: var(--text-dark);
-  background-color: var(--bg-app);
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  user-select: none;
+    height: 48px;
+    padding: 12px 24px 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #000000;
+    font-size: 14px;
+    font-weight: 700;
+    z-index: 90;
+    user-select: none;
+}
+.status-icons {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.status-icon {
+    width: 17px;
+    height: 17px;
+}
+.status-battery {
+    width: 22px;
+    height: 12px;
+    transform: translateY(0.5px);
+}
+.battery-fill {
+    fill: currentColor;
+    stroke: none;
 }
 
-.status-bar .right-icons {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+/* ==========================================================================
+   APP SCREEN SCROLLABLE BODY
+   ========================================================================== */
+.app-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
 }
 
-.status-bar svg {
-  width: 17px;
-  height: 17px;
-  fill: var(--text-dark);
+/* Extra padding at bottom to prevent floating nav overlap */
+.bottom-spacer {
+    height: 90px;
+    flex-shrink: 0;
 }
 
-/* App Layout Structure */
-.app-container {
-  padding: 12px 24px 100px;
-  /* Extra bottom padding for floating nav */
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+/* ==========================================================================
+   HEADER SECTION
+   ========================================================================== */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
 }
 
-/* Header Section */
-header.app-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* Badge 'Layar Literasi' */
+.app-logo-badge {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 8px 16px;
+    border-radius: 30px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 12px rgba(62, 50, 117, 0.15);
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.app-logo-badge:hover {
+    transform: scale(1.03);
+}
+.logo-icon-container {
+    display: flex;
+    align-items: center;
+}
+.icon-books {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2.2;
+}
+.logo-text {
+    font-size: 13.5px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
 }
 
-.logo-chip {
-  background-color: var(--primary-purple);
-  color: var(--text-light);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-family: var(--font-title);
-  font-weight: 600;
-  font-size: 13px;
-  box-shadow: 0 4px 12px rgba(60, 49, 112, 0.2);
+/* Profile Avatar */
+.profile-avatar-container {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--white);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s;
 }
-
-.logo-chip svg {
-  width: 16px;
-  height: 16px;
-  fill: currentColor;
+.profile-avatar-container:hover {
+    transform: scale(1.08);
 }
-
 .profile-avatar {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: transform 0.2s;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.profile-avatar:hover {
-  transform: scale(1.08);
+/* ==========================================================================
+   GREETING SECTION
+   ========================================================================== */
+.greeting-section {
+    margin-bottom: 24px;
+    padding-left: 2px;
+}
+.greeting-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text-olive);
+    line-height: 1.15;
+    margin-bottom: 4px;
+}
+.greeting-subtitle {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(62, 50, 117, 0.7);
 }
 
-/* Greeting Section */
-.greetings {
-  margin-top: 4px;
+/* ==========================================================================
+   WEEKLY CHECKLIST SECTION
+   ========================================================================== */
+.weekly-streak-section {
+    margin-bottom: 24px;
+}
+.days-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 4px 2px;
+}
+.day-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-width: 52px;
+    height: 72px;
+    border-radius: 18px;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+}
+.day-card:hover {
+    transform: translateY(-2px);
 }
 
-.greetings h1 {
-  font-family: var(--font-title);
-  font-size: 26px;
-  font-weight: 700;
-  color: #2F2A1C;
-  /* Dark olive-brown tint */
-  margin-bottom: 4px;
+/* Purple Theme Days (Mon, Wed, Fri) */
+.day-card.purple-theme {
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+}
+/* Lime Theme Days (Tue, Thur, Sat, Sun) */
+.day-card.lime-theme {
+    background-color: var(--accent-color);
+    color: var(--text-olive);
 }
 
-.greetings p {
-  font-size: 15px;
-  color: #6E6C5C;
-  /* Medium olive-grey */
-  font-weight: 500;
+/* Checked status styling */
+.day-card.checked {
+    opacity: 0.95;
+}
+.day-status {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 6px;
+}
+.day-card.checked.purple-theme .day-status {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+.day-card.checked.lime-theme .day-status {
+    background-color: var(--primary-color);
+    color: var(--white);
 }
 
-/* Horizontal Days Tracker */
-.days-tracker {
-  display: flex;
-  gap: 12px;
-  overflow-x: auto;
-  padding: 4px 0;
-  scrollbar-width: none;
-  cursor: grab;
-  user-select: none;
-  -webkit-user-select: none;
+/* Today (Thursday) Highlight styling */
+.day-card.today {
+    border: 2px solid var(--primary-color);
+    background-color: var(--accent-color);
+    color: var(--text-olive);
+    box-shadow: 0 6px 14px rgba(62, 50, 117, 0.15);
+}
+.day-card.today .day-status {
+    margin-top: 4px;
 }
 
-.days-tracker:active {
-  cursor: grabbing;
+/* Day Icons */
+.icon-check {
+    width: 12px;
+    height: 12px;
+}
+.icon-flame {
+    width: 18px;
+    height: 18px;
+}
+.dark-flame {
+    color: var(--primary-color);
+}
+.light-flame {
+    color: var(--white);
+    opacity: 0.85;
+}
+.day-name {
+    font-size: 12.5px;
+    font-weight: 700;
 }
 
-.days-tracker::-webkit-scrollbar {
-  display: none;
+/* ==========================================================================
+   PROGRESS CARD SECTION
+   ========================================================================== */
+.progress-section {
+    margin-bottom: 24px;
+}
+.progress-card {
+    background-color: var(--accent-color);
+    border-radius: 28px;
+    padding: 24px;
+    box-shadow: 0 10px 24px rgba(216, 245, 90, 0.22);
+    position: relative;
+    overflow: hidden;
+}
+.progress-title {
+    font-size: 21px;
+    font-weight: 800;
+    color: var(--text-olive);
+    margin-bottom: 18px;
 }
 
-.day-chip {
-  flex: 0 0 54px;
-  height: 64px;
-  border-radius: 18px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+/* Progress bar sliding logic container */
+.progress-bar-container {
+    position: relative;
+    height: 34px;
+    margin: 22px 0;
+}
+.progress-bar-bg {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.55);
+    border-radius: 20px;
+    position: relative;
+}
+.progress-bar-fill {
+    height: 100%;
+    width: 40%; /* Initial state: matches stat numbers */
+    background-color: var(--primary-color);
+    border-radius: 20px;
+    transition: width 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.day-chip span.day-name {
-  font-size: 11px;
-  font-weight: 600;
-  opacity: 0.8;
+/* Avatar indicator sliding along progress fill */
+.progress-bar-avatar-indicator {
+    position: absolute;
+    top: 50%;
+    left: 40%; /* Initial left: matches fill width */
+    transform: translate(-50%, -50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--white);
+    border: 3.5px solid var(--accent-color);
+    box-shadow: 0 4px 12px rgba(62, 50, 117, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: left 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 10;
+}
+.progress-mini-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.day-chip .day-icon {
-  width: 18px;
-  height: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.progress-level {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--text-olive);
+}
+.highlight-bold {
+    font-weight: 800;
 }
 
-.day-chip svg {
-  width: 14px;
-  height: 14px;
+/* ==========================================================================
+   STATS CARD SECTION (3 COLUMNS)
+   ========================================================================== */
+.stats-section {
+    margin-bottom: 24px;
+}
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+.stat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 8px;
+    border-radius: 24px;
+    box-shadow: 0 6px 16px rgba(62, 50, 117, 0.04);
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer;
+}
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(62, 50, 117, 0.08);
 }
 
-/* Color states for day chips */
-.day-chip.lavender {
-  background-color: var(--accent-lavender);
-  color: var(--primary-purple);
+/* Cards Colors */
+.stat-card.lime-card {
+    background-color: var(--accent-color);
+}
+.stat-card.cream-card {
+    background-color: var(--accent-light);
 }
 
-.day-chip.lavender:hover {
-  background-color: var(--accent-lavender-hover);
-  transform: translateY(-2px);
+/* Icons container circles */
+.stat-icon-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--text-olive);
+    color: var(--accent-color);
+    margin-bottom: 4px;
+}
+.stat-icon-circle.star-circle {
+    background-color: var(--text-olive);
+    color: #FCD34D; /* bright star yellow */
+}
+.stat-svg {
+    width: 16px;
+    height: 16px;
+}
+.stat-value {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--text-olive);
+    margin: 4px 0 2px 0;
+    transition: transform 0.2s ease;
+}
+.stat-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(62, 50, 117, 0.7);
 }
 
-.day-chip.lime {
-  background-color: var(--accent-lime);
-  color: var(--primary-purple);
-  border: 1.5px solid var(--primary-purple);
+/* ==========================================================================
+   TASKS CHECKLIST SECTION
+   ========================================================================== */
+.tasks-section {
+    margin-bottom: 24px;
+}
+.tasks-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-left: 2px;
+}
+.tasks-title {
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--text-olive);
+}
+.monster-avatar {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+    animation: monsterFloat 3.5s infinite ease-in-out;
 }
 
-.day-chip.lime:hover {
-  background-color: var(--accent-lime-hover);
-  transform: translateY(-2px);
+.tasks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
-/* Search Bar */
-.search-container {
-  position: relative;
-  width: 100%;
+/* Interactive Checkbox row container */
+.task-item-label {
+    display: flex;
+    align-items: center;
+    padding: 16px 20px;
+    background-color: rgba(62, 50, 117, 0.13); /* Exact soft lavender tint from image */
+    border-radius: 30px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+    transition: all 0.25s ease;
+}
+.task-item-label:hover {
+    transform: translateY(-2px);
+    background-color: rgba(62, 50, 117, 0.17);
+    box-shadow: 0 8px 16px rgba(62, 50, 117, 0.08);
+}
+.task-item-label:active {
+    transform: translateY(0);
 }
 
-.search-input {
-  width: 100%;
-  padding: 14px 16px 14px 44px;
-  border-radius: 24px;
-  border: 1px solid var(--accent-lavender);
-  background-color: #FAFAFD;
-  font-family: var(--font-body);
-  font-size: 14px;
-  color: var(--text-dark);
-  outline: none;
-  transition: all 0.2s;
-  box-shadow: 0 2px 8px rgba(213, 215, 242, 0.15);
+/* Hide raw checkbox input */
+.task-checkbox {
+    display: none;
 }
 
-.search-input:focus {
-  border-color: var(--primary-purple);
-  background-color: #FFFFFF;
-  box-shadow: 0 4px 12px rgba(60, 49, 112, 0.1);
+/* Custom checkbox graphic */
+.custom-checkbox-wrapper {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2.5px solid var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 14px;
+    flex-shrink: 0;
+    background-color: var(--white);
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.search-container svg {
-  position: absolute;
-  left: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 18px;
-  height: 18px;
-  fill: var(--text-muted);
-  pointer-events: none;
+.custom-checkbox-circle {
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-color: var(--white);
+    position: relative;
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Section Headings */
-.section-title {
-  font-family: var(--font-title);
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--text-dark);
-  margin-bottom: 2px;
+/* Checked state visual logic */
+.task-checkbox:checked + .custom-checkbox-wrapper {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+.task-checkbox:checked + .custom-checkbox-wrapper .custom-checkbox-circle {
+    width: 10px;
+    height: 10px;
 }
 
-/* Recommendations Carousel */
-.recommendations-carousel {
-  display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  padding: 4px 0 12px;
-  scrollbar-width: none;
-  scroll-snap-type: x mandatory;
-  cursor: grab;
-  user-select: none;
-  -webkit-user-select: none;
+/* Checked label formatting (strike and fade) */
+.task-text {
+    font-size: 15.5px;
+    font-weight: 600;
+    color: var(--primary-color);
+    transition: all 0.25s ease;
+}
+.task-checkbox:checked ~ .task-text {
+    opacity: 0.55;
+    text-decoration: line-through;
 }
 
-.recommendations-carousel:active {
-  cursor: grabbing;
-}
-
-.recommendations-carousel::-webkit-scrollbar {
-  display: none;
-}
-
-.book-card {
-  flex: 0 0 260px;
-  height: 340px;
-  border-radius: 28px;
-  overflow: hidden;
-  position: relative;
-  cursor: pointer;
-  scroll-snap-align: start;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s;
-}
-
-.book-card:hover {
-  transform: translateY(-4px);
-}
-
-.book-card .cover-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  pointer-events: none;
-  -webkit-user-drag: none;
-}
-
-.book-card .card-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, rgba(31, 27, 44, 0.1) 0%, rgba(31, 27, 44, 0.4) 40%, rgba(31, 27, 44, 0.85) 100%);
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 20px;
-  color: var(--text-light);
-}
-
-.book-card .tag {
-  align-self: flex-start;
-  font-family: var(--font-title);
-  font-weight: 700;
-  font-size: 10px;
-  letter-spacing: 0.8px;
-  padding: 5px 12px;
-  border-radius: 12px;
-  margin-bottom: 8px;
-  text-transform: uppercase;
-}
-
-.book-card .tag.fairytale {
-  background-color: var(--tag-fairytale);
-  color: var(--tag-fairytale-text);
-}
-
-.book-card .tag.history {
-  background-color: var(--tag-history);
-  color: var(--tag-history-text);
-}
-
-.book-card h3 {
-  font-family: var(--font-title);
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 6px;
-  line-height: 1.2;
-}
-
-.book-card p.description {
-  font-size: 12px;
-  opacity: 0.85;
-  margin-bottom: 12px;
-  white-space: normal;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  line-height: 1.4;
-}
-
-.book-card .rating-row {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  font-weight: 600;
-}
-
-.book-card .rating-row svg {
-  width: 13px;
-  height: 13px;
-  fill: #FFD214;
-}
-
-/* Category Grid Section */
-.categories-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-}
-
-.category-card {
-  border-radius: 24px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-  transition: all 0.2s;
-}
-
-.category-card:hover {
-  transform: translateY(-2px);
-}
-
-.category-card.green {
-  background-color: var(--accent-lime);
-}
-
-.category-card.lavender {
-  background-color: var(--accent-lavender);
-}
-
-.category-card .card-top {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.category-card h4 {
-  font-family: var(--font-title);
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--primary-purple);
-}
-
-.category-card .progress-pill {
-  align-self: flex-start;
-  background-color: rgba(255, 255, 255, 0.55);
-  color: var(--primary-purple);
-  padding: 3px 10px;
-  border-radius: 12px;
-  font-size: 10px;
-  font-weight: 700;
-}
-
-.category-card button.btn-start {
-  width: 100%;
-  background-color: var(--primary-purple);
-  color: var(--text-light);
-  border: none;
-  padding: 10px;
-  border-radius: 16px;
-  font-family: var(--font-title);
-  font-weight: 600;
-  font-size: 12px;
-  cursor: pointer;
-  transition: background-color 0.2s, transform 0.1s;
-}
-
-.category-card button.btn-start:hover {
-  background-color: var(--primary-purple-hover);
-}
-
-.category-card button.btn-start:active {
-  transform: scale(0.97);
-}
-
-/* Floating Bottom Navigation Bar */
+/* ==========================================================================
+   FLOATING BOTTOM NAVIGATION
+   ========================================================================== */
 .bottom-nav {
-  position: absolute;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 48px);
-  max-width: 364px;
-  height: 64px;
-  background-color: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 32px;
-  box-shadow: 0 10px 30px rgba(60, 49, 112, 0.12),
-    0 0 1px rgba(0, 0, 0, 0.05);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 0 12px;
-  z-index: 100;
+    position: absolute;
+    bottom: 24px;
+    left: 20px;
+    right: 20px;
+    height: 72px;
+    background-color: var(--white);
+    border-radius: 36px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 10px;
+    box-shadow: 0 12px 30px rgba(62, 50, 117, 0.12);
+    z-index: 95;
+    border: 1px solid rgba(62, 50, 117, 0.03);
 }
 
 .nav-item {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s;
-  color: var(--text-muted);
-}
-
-.nav-item svg {
-  width: 22px;
-  height: 22px;
-  fill: currentColor;
-  transition: fill 0.2s;
-}
-
-.nav-item.active {
-  color: var(--primary-purple);
-}
-
-.nav-item:hover:not(.active) {
-  color: var(--primary-purple);
-  background-color: rgba(60, 49, 112, 0.05);
-}
-
-/* --- Responsive Rules --- */
-@media (max-width: 480px) {
-  body {
-    padding: 0;
-    background-color: var(--bg-app);
-  }
-
-  .phone-wrapper {
-    width: 100vw;
-    height: 100vh;
+    background: none;
     border: none;
-    border-radius: 0;
-    box-shadow: none;
-  }
+    cursor: pointer;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(62, 50, 117, 0.55);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
 
-  .phone-content {
-    border-radius: 0;
-  }
+.nav-icon {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2.2;
+}
 
-  .status-bar {
-    padding: 16px 24px 8px;
-  }
+/* Nav Item active state */
+.nav-item.active {
+    color: var(--primary-color);
+    background-color: rgba(62, 50, 117, 0.08);
+    transform: scale(1.12);
+}
+.nav-item:hover:not(.active) {
+    color: var(--primary-color);
+    background-color: rgba(62, 50, 117, 0.03);
+}
 
-  .bottom-nav {
-    bottom: 16px;
-    width: calc(100% - 32px);
-  }
+/* ==========================================================================
+   ANIMATIONS & DECORATION
+   ========================================================================== */
+@keyframes monsterFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-6px) rotate(4deg);
+    }
+}
+
+/* Active Stats pulse animation when updating */
+@keyframes countUp {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.25);
+        color: var(--primary-color);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+.animate-stat {
+    animation: countUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Confetti element styles (Dynamic JS generation) */
+.confetti {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    z-index: 99;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   RESPONSIVENESS (MOBILE SCREEN OVERRIDE)
+   ========================================================================== */
+@media (max-width: 480px) {
+    body {
+        padding: 0;
+        background-color: var(--bg-color);
+    }
+    .phone-mockup {
+        width: 100%;
+        height: 100vh;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    .phone-screen {
+        border-radius: 0;
+    }
+    .phone-notch, 
+    .phone-volume-buttons, 
+    .phone-power-button, 
+    .phone-home-indicator {
+        display: none; /* Hide device bezel items on real mobile viewports */
+    }
+    .status-bar {
+        padding-top: 16px;
+        height: 52px;
+    }
 }
