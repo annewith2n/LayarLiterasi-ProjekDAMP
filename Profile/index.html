@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Profile UI</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+  <div class="phone">
+    <div class="notch"></div>
+
+    <!-- STATUS BAR -->
+    <div class="status-bar">
+    <span class="time">9:41</span>
+    <div class="status-icons">
+    <i class="fa-solid fa-signal"></i>
+    <i class="fa-solid fa-wifi"></i>
+    <i class="fa-solid fa-battery-full"></i>
+  </div>
+
+</div>
+
+    <h1 class="title">Profile</h1>
+    <div class="profile">
+
+  <div class="profile-container">
+
+    <!-- FOTO PROFILE -->
+    <img
+      src="assets/profile.jpg"
+      alt="profile"
+      id="profileImage"
+    >
+
+    <!-- ICON CAMERA -->
+    <label for="fileInput" class="camera-icon">
+      <i class="fa-solid fa-camera"></i>
+    </label>
+
+    <!-- INPUT FOTO -->
+    <input
+      type="file"
+      id="fileInput"
+      accept="image/*"
+    >
+
+  </div>
+
+  <!-- USERNAME -->
+<div class="username-container">
+
+  <h2 id="username">
+    Susi
+  </h2>
+
+  <button id="editNameBtn">
+    <i class="fa-solid fa-pen"></i>
+  </button>
+
+</div>
+
+<!-- EMAIL -->
+<p class="email">
+  susisimilikiti@gmail.com
+</p>
+
+    <!-- ACCOUNT -->
+    <div class="section-title">
+      <i class="fa-solid fa-user"></i>
+      <span>Account</span>
+    </div>
+
+    <div class="menu-card">
+      Change Password
+    </div>
+
+    <div class="menu-card">
+      Change Email
+    </div>
+
+    <!-- NOTIFICATION -->
+    <div class="section-title">
+      <i class="fa-solid fa-bell"></i>
+      <span>Notifications</span>
+    </div>
+
+    <div class="toggle-card">
+
+      <span>Notifications</span>
+
+      <label class="switch">
+        <input type="checkbox" checked>
+        <span class="slider"></span>
+      </label>
+
+    </div>
+
+    <div class="toggle-card">
+
+      <span>App Notifications</span>
+
+      <label class="switch">
+        <input type="checkbox" checked>
+        <span class="slider"></span>
+      </label>
+
+    </div>
+
+    <!-- BOTTOM NAV -->
+    <div class="bottom-nav">
+
+      <i class="fa-solid fa-house"></i>
+
+      <i class="fa-solid fa-compass"></i>
+
+      <i class="fa-solid fa-user active"></i>
+
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
