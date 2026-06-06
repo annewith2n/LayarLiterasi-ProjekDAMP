@@ -1,0 +1,310 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body{
+  background: #d9d9d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.phone{
+  width: 430px;
+  height: 900px;
+
+  background: #efedf5;
+
+  border: 12px solid black;
+  border-radius: 40px;
+
+  padding: 20px;
+  padding-bottom: 140px;
+
+  position: relative;
+
+  overflow-y: auto;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* TITLE */
+
+.title{
+  text-align: center;
+  color: #2d2d5b;
+  margin-top: 10px;
+  font-size: 24px;
+}
+
+/* STATUS BAR */
+
+.status-bar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 20px;
+
+  color: #2d2d5b;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.status-icons{
+  display: flex;
+  gap: 10px;
+}
+
+/* PROFILE */
+
+.profile{
+  text-align: center;
+  margin-top: 40px;
+}
+
+.profile img{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile h2{
+  margin-top: 15px;
+  color: #2d2d5b;
+  font-size: 42px;
+}
+
+.profile p{
+  margin-top: 5px;
+  color: #4b4b6d;
+  font-size: 18px;
+}
+
+/* SECTION */
+
+.section-title{
+  margin-top: 35px;
+  background: #cddf72;
+  padding: 18px 20px;
+  border-radius: 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #2d2d5b;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* MENU CARD */
+
+.menu-card{
+  margin-top: 18px;
+  background: #d8d4ec;
+  padding: 22px 20px;
+  border-radius: 20px;
+
+  color: #2d2d5b;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* TOGGLE CARD */
+
+.toggle-card{
+  margin-top: 18px;
+  background: #d8d4ec;
+  padding: 18px 20px;
+  border-radius: 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: #2d2d5b;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* SWITCH */
+
+.switch{
+  position: relative;
+  width: 44px;
+  height: 24px;
+}
+
+.switch input{
+  opacity: 0;
+}
+
+.slider{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background: #ccc;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.slider::before{
+  content: "";
+  position: absolute;
+
+  width: 18px;
+  height: 18px;
+
+  left: 3px;
+  bottom: 3px;
+
+  background: white;
+  border-radius: 50%;
+
+  transition: 0.3s;
+}
+
+.switch input:checked + .slider{
+  background: #39c75a;
+}
+
+.switch input:checked + .slider::before{
+  transform: translateX(20px);
+}
+
+/* BOTTOM NAV */
+
+.bottom-nav{
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 300px;
+  padding: 18px 0;
+
+  background: white;
+  border-radius: 30px;
+
+  display: flex;
+  justify-content: space-around;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* NOTCH */
+
+.notch{
+  width: 140px;
+  height: 28px;
+
+  background: black;
+
+  border-radius: 20px;
+
+  position: absolute;
+  top: 10px;
+  left: 50%;
+
+  transform: translateX(-50%);
+}
+
+.bottom-nav .active{
+  color: #4b4b9b;
+}
+
+  /* PROFILE */
+
+.profile{
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* PROFILE IMAGE */
+
+.profile-container{
+  position: relative;
+  width: 100px;
+  margin: auto;
+}
+
+.profile-container img{
+  width: 100px;
+  height: 100px;
+
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* CAMERA ICON */
+
+.camera-icon{
+  position: absolute;
+
+  right: 0;
+  bottom: 0;
+
+  width: 32px;
+  height: 32px;
+
+  background: white;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
+  color: #2d2d5b;
+
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* HIDE INPUT */
+
+#fileInput{
+  display: none;
+}
+
+/* USERNAME */
+.username-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 6px;
+
+  margin-top: 18px;
+}
+
+/* EDIT BUTTON */
+
+#editNameBtn{
+  border: none;
+  background: none;
+
+  cursor: pointer;
+
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #b7b0df;
+
+  font-size: 14px;
+
+  margin-top: 5px;
+}
