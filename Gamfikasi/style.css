@@ -1,0 +1,741 @@
+/* ==========================================================================
+   DESIGN SYSTEM & CUSTOM PROPERTIES
+   ========================================================================== */
+:root {
+    /* Color Palette */
+    --primary-color: #3E3275;      /* Deep violet (headers, badges, indicators) */
+    --primary-light: #C9C7ED;     /* Inactive light lavender */
+    --accent-color: #D8F55A;       /* Lime green (progress card, read card) */
+    --accent-light: #E5FAC0;       /* Soft yellow-cream for stars card */
+    --text-olive: #3B4E18;         /* Dark olive green for titles */
+    --text-muted: #7E79A8;         /* Faded violet text */
+    --bg-color: #F1F1F8;           /* Light grayish-lavender screen background */
+    --white: #FFFFFF;
+    
+    /* Device Mockup Colors */
+    --device-bezel: #1C1C1E;
+    --device-screen-shadow: 0 25px 50px -12px rgba(62, 50, 117, 0.25);
+    
+    /* Typography */
+    --font-main: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ==========================================================================
+   RESET & BASE STYLES
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: #E2E1F0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 20px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.phone-screen::-webkit-scrollbar,
+.app-body::-webkit-scrollbar,
+.days-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.phone-screen,
+.app-body,
+.days-container {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* ==========================================================================
+   DEVICE MOCKUP WRAPPER (IPHONE STYLE)
+   ========================================================================== */
+.phone-mockup {
+    position: relative;
+    width: 412px;
+    height: 860px;
+    background-color: var(--device-bezel);
+    border: 14px solid var(--device-bezel);
+    border-radius: 48px;
+    box-shadow: var(--device-screen-shadow), 
+                0 0 0 4px rgba(255, 255, 255, 0.1),
+                0 30px 70px rgba(0, 0, 0, 0.35);
+    display: flex;
+    flex-direction: column;
+    overflow: visible; /* to allow buttons to peak out */
+    transition: all 0.3s ease;
+}
+
+/* Phone Buttons (Visual Polish) */
+.phone-volume-buttons {
+    position: absolute;
+    left: -18px;
+    top: 180px;
+    width: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: -1;
+}
+.volume-up, .volume-down {
+    width: 4px;
+    height: 50px;
+    background: #2c2c2e;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.phone-power-button {
+    position: absolute;
+    right: -18px;
+    top: 240px;
+    width: 4px;
+    height: 80px;
+    background: #2c2c2e;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    z-index: -1;
+}
+
+/* Notch/Dynamic Island */
+.phone-notch {
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110px;
+    height: 28px;
+    background-color: #000000;
+    border-radius: 20px;
+    z-index: 100;
+    box-shadow: inset 0 0 4px rgba(255,255,255,0.1);
+}
+
+/* Phone Screen */
+.phone-screen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    border-radius: 36px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Phone Home Indicator Bar */
+.phone-home-indicator {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 130px;
+    height: 5px;
+    background-color: #000000;
+    border-radius: 10px;
+    opacity: 0.25;
+    z-index: 99;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   STATUS BAR
+   ========================================================================== */
+.status-bar {
+    height: 48px;
+    padding: 12px 24px 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #000000;
+    font-size: 14px;
+    font-weight: 700;
+    z-index: 90;
+    user-select: none;
+}
+.status-icons {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.status-icon {
+    width: 17px;
+    height: 17px;
+}
+.status-battery {
+    width: 22px;
+    height: 12px;
+    transform: translateY(0.5px);
+}
+.battery-fill {
+    fill: currentColor;
+    stroke: none;
+}
+
+/* ==========================================================================
+   APP SCREEN SCROLLABLE BODY
+   ========================================================================== */
+.app-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Extra padding at bottom to prevent floating nav overlap */
+.bottom-spacer {
+    height: 90px;
+    flex-shrink: 0;
+}
+
+/* ==========================================================================
+   HEADER SECTION
+   ========================================================================== */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+/* Badge 'Layar Literasi' */
+.app-logo-badge {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 8px 16px;
+    border-radius: 30px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 12px rgba(62, 50, 117, 0.15);
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.app-logo-badge:hover {
+    transform: scale(1.03);
+}
+.logo-icon-container {
+    display: flex;
+    align-items: center;
+}
+.icon-books {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2.2;
+}
+.logo-text {
+    font-size: 13.5px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+
+/* Profile Avatar */
+.profile-avatar-container {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--white);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.profile-avatar-container:hover {
+    transform: scale(1.08);
+}
+.profile-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ==========================================================================
+   GREETING SECTION
+   ========================================================================== */
+.greeting-section {
+    margin-bottom: 24px;
+    padding-left: 2px;
+}
+.greeting-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text-olive);
+    line-height: 1.15;
+    margin-bottom: 4px;
+}
+.greeting-subtitle {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(62, 50, 117, 0.7);
+}
+
+/* ==========================================================================
+   WEEKLY CHECKLIST SECTION
+   ========================================================================== */
+.weekly-streak-section {
+    margin-bottom: 24px;
+}
+.days-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 4px 2px;
+}
+.day-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-width: 52px;
+    height: 72px;
+    border-radius: 18px;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+}
+.day-card:hover {
+    transform: translateY(-2px);
+}
+
+/* Purple Theme Days (Mon, Wed, Fri) */
+.day-card.purple-theme {
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+}
+/* Lime Theme Days (Tue, Thur, Sat, Sun) */
+.day-card.lime-theme {
+    background-color: var(--accent-color);
+    color: var(--text-olive);
+}
+
+/* Checked status styling */
+.day-card.checked {
+    opacity: 0.95;
+}
+.day-status {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 6px;
+}
+.day-card.checked.purple-theme .day-status {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+.day-card.checked.lime-theme .day-status {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* Today (Thursday) Highlight styling */
+.day-card.today {
+    border: 2px solid var(--primary-color);
+    background-color: var(--accent-color);
+    color: var(--text-olive);
+    box-shadow: 0 6px 14px rgba(62, 50, 117, 0.15);
+}
+.day-card.today .day-status {
+    margin-top: 4px;
+}
+
+/* Day Icons */
+.icon-check {
+    width: 12px;
+    height: 12px;
+}
+.icon-flame {
+    width: 18px;
+    height: 18px;
+}
+.dark-flame {
+    color: var(--primary-color);
+}
+.light-flame {
+    color: var(--white);
+    opacity: 0.85;
+}
+.day-name {
+    font-size: 12.5px;
+    font-weight: 700;
+}
+
+/* ==========================================================================
+   PROGRESS CARD SECTION
+   ========================================================================== */
+.progress-section {
+    margin-bottom: 24px;
+}
+.progress-card {
+    background-color: var(--accent-color);
+    border-radius: 28px;
+    padding: 24px;
+    box-shadow: 0 10px 24px rgba(216, 245, 90, 0.22);
+    position: relative;
+    overflow: hidden;
+}
+.progress-title {
+    font-size: 21px;
+    font-weight: 800;
+    color: var(--text-olive);
+    margin-bottom: 18px;
+}
+
+/* Progress bar sliding logic container */
+.progress-bar-container {
+    position: relative;
+    height: 34px;
+    margin: 22px 0;
+}
+.progress-bar-bg {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.55);
+    border-radius: 20px;
+    position: relative;
+}
+.progress-bar-fill {
+    height: 100%;
+    width: 40%; /* Initial state: matches stat numbers */
+    background-color: var(--primary-color);
+    border-radius: 20px;
+    transition: width 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Avatar indicator sliding along progress fill */
+.progress-bar-avatar-indicator {
+    position: absolute;
+    top: 50%;
+    left: 40%; /* Initial left: matches fill width */
+    transform: translate(-50%, -50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--white);
+    border: 3.5px solid var(--accent-color);
+    box-shadow: 0 4px 12px rgba(62, 50, 117, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: left 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 10;
+}
+.progress-mini-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.progress-level {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--text-olive);
+}
+.highlight-bold {
+    font-weight: 800;
+}
+
+/* ==========================================================================
+   STATS CARD SECTION (3 COLUMNS)
+   ========================================================================== */
+.stats-section {
+    margin-bottom: 24px;
+}
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+.stat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 8px;
+    border-radius: 24px;
+    box-shadow: 0 6px 16px rgba(62, 50, 117, 0.04);
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer;
+}
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(62, 50, 117, 0.08);
+}
+
+/* Cards Colors */
+.stat-card.lime-card {
+    background-color: var(--accent-color);
+}
+.stat-card.cream-card {
+    background-color: var(--accent-light);
+}
+
+/* Icons container circles */
+.stat-icon-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--text-olive);
+    color: var(--accent-color);
+    margin-bottom: 4px;
+}
+.stat-icon-circle.star-circle {
+    background-color: var(--text-olive);
+    color: #FCD34D; /* bright star yellow */
+}
+.stat-svg {
+    width: 16px;
+    height: 16px;
+}
+.stat-value {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--text-olive);
+    margin: 4px 0 2px 0;
+    transition: transform 0.2s ease;
+}
+.stat-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(62, 50, 117, 0.7);
+}
+
+/* ==========================================================================
+   TASKS CHECKLIST SECTION
+   ========================================================================== */
+.tasks-section {
+    margin-bottom: 24px;
+}
+.tasks-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-left: 2px;
+}
+.tasks-title {
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--text-olive);
+}
+.monster-avatar {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+    animation: monsterFloat 3.5s infinite ease-in-out;
+}
+
+.tasks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Interactive Checkbox row container */
+.task-item-label {
+    display: flex;
+    align-items: center;
+    padding: 16px 20px;
+    background-color: rgba(62, 50, 117, 0.13); /* Exact soft lavender tint from image */
+    border-radius: 30px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+    transition: all 0.25s ease;
+}
+.task-item-label:hover {
+    transform: translateY(-2px);
+    background-color: rgba(62, 50, 117, 0.17);
+    box-shadow: 0 8px 16px rgba(62, 50, 117, 0.08);
+}
+.task-item-label:active {
+    transform: translateY(0);
+}
+
+/* Hide raw checkbox input */
+.task-checkbox {
+    display: none;
+}
+
+/* Custom checkbox graphic */
+.custom-checkbox-wrapper {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2.5px solid var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 14px;
+    flex-shrink: 0;
+    background-color: var(--white);
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.custom-checkbox-circle {
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-color: var(--white);
+    position: relative;
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Checked state visual logic */
+.task-checkbox:checked + .custom-checkbox-wrapper {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+.task-checkbox:checked + .custom-checkbox-wrapper .custom-checkbox-circle {
+    width: 10px;
+    height: 10px;
+}
+
+/* Checked label formatting (strike and fade) */
+.task-text {
+    font-size: 15.5px;
+    font-weight: 600;
+    color: var(--primary-color);
+    transition: all 0.25s ease;
+}
+.task-checkbox:checked ~ .task-text {
+    opacity: 0.55;
+    text-decoration: line-through;
+}
+
+/* ==========================================================================
+   FLOATING BOTTOM NAVIGATION
+   ========================================================================== */
+.bottom-nav {
+    position: absolute;
+    bottom: 24px;
+    left: 20px;
+    right: 20px;
+    height: 72px;
+    background-color: var(--white);
+    border-radius: 36px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 10px;
+    box-shadow: 0 12px 30px rgba(62, 50, 117, 0.12);
+    z-index: 95;
+    border: 1px solid rgba(62, 50, 117, 0.03);
+}
+
+.nav-item {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(62, 50, 117, 0.55);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nav-icon {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2.2;
+}
+
+/* Nav Item active state */
+.nav-item.active {
+    color: var(--primary-color);
+    background-color: rgba(62, 50, 117, 0.08);
+    transform: scale(1.12);
+}
+.nav-item:hover:not(.active) {
+    color: var(--primary-color);
+    background-color: rgba(62, 50, 117, 0.03);
+}
+
+/* ==========================================================================
+   ANIMATIONS & DECORATION
+   ========================================================================== */
+@keyframes monsterFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-6px) rotate(4deg);
+    }
+}
+
+/* Active Stats pulse animation when updating */
+@keyframes countUp {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.25);
+        color: var(--primary-color);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+.animate-stat {
+    animation: countUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Confetti element styles (Dynamic JS generation) */
+.confetti {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    z-index: 99;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   RESPONSIVENESS (MOBILE SCREEN OVERRIDE)
+   ========================================================================== */
+@media (max-width: 480px) {
+    body {
+        padding: 0;
+        background-color: var(--bg-color);
+    }
+    .phone-mockup {
+        width: 100%;
+        height: 100vh;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    .phone-screen {
+        border-radius: 0;
+    }
+    .phone-notch, 
+    .phone-volume-buttons, 
+    .phone-power-button, 
+    .phone-home-indicator {
+        display: none; /* Hide device bezel items on real mobile viewports */
+    }
+    .status-bar {
+        padding-top: 16px;
+        height: 52px;
+    }
+}

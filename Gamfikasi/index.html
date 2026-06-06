@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layar Literasi - Belajar Membaca Interaktif</title>
+    <!-- Google Fonts: Outfit (Rounded, Premium, Warm font style) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Outer Phone Mockup Frame (For Desktop View) -->
+    <div class="phone-mockup">
+        <!-- Phone Speaker & Camera Notch (iPhone Style Bezel) -->
+        <div class="phone-notch"></div>
+        <div class="phone-volume-buttons">
+            <div class="volume-up"></div>
+            <div class="volume-down"></div>
+        </div>
+        <div class="phone-power-button"></div>
+
+        <!-- Simulated Mobile Screen Content -->
+        <div class="phone-screen" id="appScreen">
+            
+            <!-- Mobile Top Status Bar -->
+            <div class="status-bar">
+                <div class="status-time">9:41</div>
+                <div class="status-icons">
+                    <!-- Signal Icon -->
+                    <svg class="status-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M2 19h2v2H2v-2zm4-4h2v6H6v-6zm4-4h2v10h-2V11zm4-4h2v14h-2V7zm4-4h2v18h-2V3z"/>
+                    </svg>
+                    <!-- Wifi Icon -->
+                    <svg class="status-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 21l-12-12c4.4-4.4 11.6-4.4 16 0l-4 4c-2.2-2.2-5.8-2.2-8 0l8 8 8-8c-2.2-2.2-5.8-2.2-8 0l-4-4"/>
+                    </svg>
+                    <!-- Battery Icon -->
+                    <svg class="status-icon status-battery" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="7" width="16" height="10" rx="2" fill="none" />
+                        <path d="M20 11v2" stroke-linecap="round"/>
+                        <rect x="4" y="9" width="12" height="6" rx="1" fill="currentColor" class="battery-fill"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- App Container (Scrollable screen body) -->
+            <div class="app-body">
+                
+                <!-- Header badge and avatar -->
+                <header class="app-header">
+                    <div class="app-logo-badge">
+                        <span class="logo-icon-container">
+                            <!-- SVG Book Stack -->
+                            <svg class="icon-books" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 19.5V15a2.5 2.5 0 0 1 2.5-2.5H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-9.5H6.5a2.5 2.5 0 0 0-2.5 2.5z"/>
+                                <path d="M4 12V7.5A2.5 2.5 0 0 1 6.5 5H20M4 12A2.5 2.5 0 0 0 6.5 14.5H20V5H6.5a2.5 2.5 0 0 0-2.5 2.5z"/>
+                                <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v5H6.5A2.5 2.5 0 0 1 4 4.5z"/>
+                            </svg>
+                        </span>
+                        <span class="logo-text">Layar Literasi</span>
+                    </div>
+                    <div class="profile-avatar-container">
+                        <img src="assets/profile_susi.png" alt="Susi" class="profile-avatar">
+                    </div>
+                </header>
+
+                <!-- Greeting message -->
+                <section class="greeting-section">
+                    <h1 class="greeting-title">Hi, Susi!</h1>
+                    <p class="greeting-subtitle">What you've achieved today?</p>
+                </section>
+
+                <!-- Weekly Streak/Calendar Row -->
+                <section class="weekly-streak-section">
+                    <div class="days-container">
+                        <!-- Monday (Checked) -->
+                        <div class="day-card checked purple-theme">
+                            <span class="day-name">Mon</span>
+                            <span class="day-status">
+                                <svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </span>
+                        </div>
+                        <!-- Tuesday (Checked) -->
+                        <div class="day-card checked lime-theme">
+                            <span class="day-name">Tue</span>
+                            <span class="day-status">
+                                <svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </span>
+                        </div>
+                        <!-- Wednesday (Checked) -->
+                        <div class="day-card checked purple-theme">
+                            <span class="day-name">Wed</span>
+                            <span class="day-status">
+                                <svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </span>
+                        </div>
+                        <!-- Thursday (Active/Current, with Border & Dark Flame) -->
+                        <div class="day-card today lime-theme-border">
+                            <span class="day-name">Thur</span>
+                            <span class="day-status font-icon">
+                                <svg class="icon-flame dark-flame" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M17.66 11.2C17.43 10.9 17.15 10.64 16.89 10.38C15.62 9.1 14.38 7.8 14.38 5.97C14.38 4.77 14.93 3.65 15.65 2.68C14.15 2.82 12.63 3.68 11.75 4.96C10.74 6.43 10.64 8.44 11.5 10.02C11.64 10.27 11.79 10.51 11.96 10.74C12.18 11.05 12.27 11.41 12.21 11.79C12.11 12.38 11.6 13.06 10.88 13.06C10.54 13.06 10.22 12.92 9.97 12.69C8.38 11.19 8.27 8.7 9.7 7.02C8.1 7.42 6.67 8.87 6.12 10.66C5.47 12.79 5.86 15.17 7.18 16.92C9.28 19.69 13.14 20.61 16.27 19.16C19.38 17.72 20.89 14.07 19.46 10.87C19.04 11.93 18.42 12.21 17.66 11.2Z"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <!-- Friday (Flame/Streak, Violet) -->
+                        <div class="day-card purple-theme">
+                            <span class="day-name">Fri</span>
+                            <span class="day-status">
+                                <svg class="icon-flame light-flame" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M17.66 11.2C17.43 10.9 17.15 10.64 16.89 10.38C15.62 9.1 14.38 7.8 14.38 5.97C14.38 4.77 14.93 3.65 15.65 2.68C14.15 2.82 12.63 3.68 11.75 4.96C10.74 6.43 10.64 8.44 11.5 10.02C11.64 10.27 11.79 10.51 11.96 10.74C12.18 11.05 12.27 11.41 12.21 11.79C12.11 12.38 11.6 13.06 10.88 13.06C10.54 13.06 10.22 12.92 9.97 12.69C8.38 11.19 8.27 8.7 9.7 7.02C8.1 7.42 6.67 8.87 6.12 10.66C5.47 12.79 5.86 15.17 7.18 16.92C9.28 19.69 13.14 20.61 16.27 19.16C19.38 17.72 20.89 14.07 19.46 10.87C19.04 11.93 18.42 12.21 17.66 11.2Z"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <!-- Saturday (Flame/Streak, Lime Green) -->
+                        <div class="day-card lime-theme">
+                            <span class="day-name">Sat</span>
+                            <span class="day-status">
+                                <svg class="icon-flame light-flame" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M17.66 11.2C17.43 10.9 17.15 10.64 16.89 10.38C15.62 9.1 14.38 7.8 14.38 5.97C14.38 4.77 14.93 3.65 15.65 2.68C14.15 2.82 12.63 3.68 11.75 4.96C10.74 6.43 10.64 8.44 11.5 10.02C11.64 10.27 11.79 10.51 11.96 10.74C12.18 11.05 12.27 11.41 12.21 11.79C12.11 12.38 11.6 13.06 10.88 13.06C10.54 13.06 10.22 12.92 9.97 12.69C8.38 11.19 8.27 8.7 9.7 7.02C8.1 7.42 6.67 8.87 6.12 10.66C5.47 12.79 5.86 15.17 7.18 16.92C9.28 19.69 13.14 20.61 16.27 19.16C19.38 17.72 20.89 14.07 19.46 10.87C19.04 11.93 18.42 12.21 17.66 11.2Z"/>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Progress Card -->
+                <section class="progress-section">
+                    <div class="progress-card">
+                        <h2 class="progress-title">You're Progress</h2>
+                        
+                        <!-- Progress Slider Layout -->
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar-fill" id="progressBarFill"></div>
+                                <div class="progress-bar-avatar-indicator" id="progressAvatarIndicator">
+                                    <img src="assets/profile_susi.png" alt="Susi Mini" class="progress-mini-avatar">
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="progress-level">You're at the <span class="highlight-bold">Junior</span> level!</p>
+                    </div>
+                </section>
+
+                <!-- Stats Grid (Read, Stars, Streaks) -->
+                <section class="stats-section">
+                    <div class="stats-grid">
+                        <!-- Stat 1: Read -->
+                        <div class="stat-card lime-card">
+                            <div class="stat-icon-circle green-dark-circle">
+                                <svg class="stat-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                            <span class="stat-value" id="statRead">5</span>
+                            <span class="stat-label">Read</span>
+                        </div>
+                        <!-- Stat 2: Stars -->
+                        <div class="stat-card cream-card">
+                            <div class="stat-icon-circle star-circle">
+                                <svg class="stat-svg star-svg" viewBox="0 0 24 24" fill="currentColor">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </div>
+                            <span class="stat-value" id="statStars">20</span>
+                            <span class="stat-label">Stars</span>
+                        </div>
+                        <!-- Stat 3: Streaks -->
+                        <div class="stat-card lime-card">
+                            <div class="stat-icon-circle green-dark-circle">
+                                <svg class="stat-svg" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M17.66 11.2C17.43 10.9 17.15 10.64 16.89 10.38C15.62 9.1 14.38 7.8 14.38 5.97C14.38 4.77 14.93 3.65 15.65 2.68C14.15 2.82 12.63 3.68 11.75 4.96C10.74 6.43 10.64 8.44 11.5 10.02C11.64 10.27 11.79 10.51 11.96 10.74C12.18 11.05 12.27 11.41 12.21 11.79C12.11 12.38 11.6 13.06 10.88 13.06C10.54 13.06 10.22 12.92 9.97 12.69C8.38 11.19 8.27 8.7 9.7 7.02C8.1 7.42 6.67 8.87 6.12 10.66C5.47 12.79 5.86 15.17 7.18 16.92C9.28 19.69 13.14 20.61 16.27 19.16C19.38 17.72 20.89 14.07 19.46 10.87C19.04 11.93 18.42 12.21 17.66 11.2Z"/>
+                                </svg>
+                            </div>
+                            <span class="stat-value" id="statStreaks">4</span>
+                            <span class="stat-label">Streaks</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Tasks Checklist Section -->
+                <section class="tasks-section">
+                    <div class="tasks-header-container">
+                        <h2 class="tasks-title">Complete 3 tasks today!</h2>
+                        <img src="assets/purple_monster.png" alt="Cute Monster" class="monster-avatar">
+                    </div>
+
+                    <div class="tasks-list">
+                        <!-- Task Item 1 -->
+                        <label class="task-item-label" for="task1">
+                            <input type="checkbox" id="task1" class="task-checkbox" data-points="5" data-stars="10" data-streaks="1">
+                            <span class="custom-checkbox-wrapper">
+                                <span class="custom-checkbox-circle"></span>
+                            </span>
+                            <span class="task-text">Read 1 fairytale</span>
+                        </label>
+
+                        <!-- Task Item 2 -->
+                        <label class="task-item-label" for="task2">
+                            <input type="checkbox" id="task2" class="task-checkbox" data-points="5" data-stars="10" data-streaks="1">
+                            <span class="custom-checkbox-wrapper">
+                                <span class="custom-checkbox-circle"></span>
+                            </span>
+                            <span class="task-text">Complete a quiz</span>
+                        </label>
+
+                        <!-- Task Item 3 -->
+                        <label class="task-item-label" for="task3">
+                            <input type="checkbox" id="task3" class="task-checkbox" data-points="5" data-stars="10" data-streaks="1">
+                            <span class="custom-checkbox-wrapper">
+                                <span class="custom-checkbox-circle"></span>
+                            </span>
+                            <span class="task-text">Read for 10 minutes</span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Padding spacer for scroll safety -->
+                <div class="bottom-spacer"></div>
+
+            </div> <!-- End App Body -->
+
+            <!-- Bottom Floating Navigation Bar -->
+            <nav class="bottom-nav">
+                <button class="nav-item active" aria-label="Home">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        <polyline points="9 22 9 12 15 12 15 22"/>
+                    </svg>
+                </button>
+                <button class="nav-item" aria-label="Progress">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="12" r="6"/>
+                        <circle cx="12" cy="12" r="2"/>
+                        <path d="M12 2v20M2 12h20"/>
+                    </svg>
+                </button>
+                <button class="nav-item" aria-label="Profile">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                </button>
+            </nav>
+
+            <!-- Phone bottom home indicator pill (Bezel visual) -->
+            <div class="phone-home-indicator"></div>
+
+        </div> <!-- End Phone Screen -->
+    </div> <!-- End Phone Mockup Frame -->
+
+    <script src="app.js"></script>
+</body>
+</html>
